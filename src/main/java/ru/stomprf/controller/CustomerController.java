@@ -1,34 +1,26 @@
 package ru.stomprf.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-import ru.stomprf.db.DataSourceTest;
-import ru.stomprf.main.User;
+import org.springframework.web.bind.annotation.*;
+import ru.stomprf.main.Customer;
+import ru.stomprf.repo.CustomerRepo;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/customers")
 public class CustomerController {
 
-    private final DataSourceTest dataSourceTest;
+    private final CustomerRepo customerRepo;
 
-    public CustomerController(@Autowired DataSourceTest dataSourceTest) {
-        this.dataSourceTest = dataSourceTest;
+    public CustomerController(@Autowired CustomerRepo customerRepo) {
+        this.customerRepo = customerRepo;
     }
 
-    @GetMapping("/customers")
-    public List<User> customers(){
-        return dataSourceTest.testDataSource();
+    @GetMapping
+    public List<Customer> customers(){
+        return  customerRepo.findAll();
     }
-
-    @GetMapping("/dasha")
-    public String da(){
-        return "<html>Любимому колдырю &#9825; &#9825; &#9825;</html>";
-    }
-
-
 
 
 }
