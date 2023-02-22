@@ -1,5 +1,8 @@
 package ru.stomprf.main;
 
+
+
+
 public class Customer {
 
     public Customer(){}
@@ -8,10 +11,16 @@ public class Customer {
         this.name = name;
     }
 
+    public Customer(String name, String phoneNumber, int discount) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.discount = discount;
+    }
+
     private Long id;
     private String name;
     private String phoneNumber;
-    private int discount;
+    private Integer discount;
 
     public Customer(Long id, String name, String phoneNumber, int discount) {
         this.id = id;
@@ -54,9 +63,11 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", email='" + phoneNumber + '\'' +
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", discount=" + discount +
                 '}';
     }
 }

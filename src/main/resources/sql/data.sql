@@ -1,7 +1,7 @@
 CREATE TABLE customers(
-    id SERIAL PRIMARY KEY,
+    id SERIAL,
     name VARCHAR(15) NOT NULL,
-    tel_number VARCHAR(13) NOT NULL,
+    phone_number VARCHAR(13) NOT NULL PRIMARY KEY,
     discount int NOT NULL,
     number_of_purchases int,
     total_amount int,
@@ -9,3 +9,5 @@ CREATE TABLE customers(
     CHECK(number_of_purchases >= 0),
     CHECK(total_amount >=0)
 );
+
+INSERT INTO customers(name, phone_number, discount) VALUES('', '', );

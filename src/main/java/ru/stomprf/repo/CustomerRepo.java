@@ -5,17 +5,13 @@ import org.springframework.stereotype.Component;
 import ru.stomprf.db.DBInteraction;
 import ru.stomprf.main.Customer;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 @Component
 public class CustomerRepo {
 
-    final
-    DBInteraction dbInteraction;
+    final DBInteraction dbInteraction;
 
     public CustomerRepo(@Autowired DBInteraction dbInteraction) {
         this.dbInteraction = dbInteraction;
@@ -26,16 +22,22 @@ public class CustomerRepo {
         return dbInteraction.selectAllMethod();
     }
 
+    public Customer save(Customer newCustomer){
+        if (newCustomer.getPhoneNumber().length() < 12)
+            return null;
+        Customer customer = dbInteraction.insertRowMethod(newCustomer);
+        if (customer == null)
+            return null;
+        return customer;
+    }
+
     public List<Customer> findByPhoneNumber(String phoneNumber){
         return Collections.emptyList();
     }
 
-    public int delete(Long id){
-        return 0;
+    public Customer delete(Long id){
+       return dbInteraction.deleteRowMethod(id);
     }
 
-    public Customer save(Customer customer){
-        return new Customer();
-    }
 
 }
