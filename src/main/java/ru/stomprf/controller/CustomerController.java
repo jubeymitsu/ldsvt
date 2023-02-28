@@ -22,7 +22,17 @@ public class CustomerController {
 
     @GetMapping
     public List<Customer> customers(){
-        return  customerRepo.findAll();
+        return customerRepo.findAll();
+    }
+
+    @GetMapping("{id}")
+    public Customer getOne(@PathVariable("id") Integer id){
+        return customerRepo.findEntityById(id);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public Customer deleteCustomer(@PathVariable("id") Integer id){
+        return customerRepo.delete(id);
     }
 
     @PostMapping("/add")
@@ -31,10 +41,12 @@ public class CustomerController {
         return customerRepo.save(customer);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteCustomer(@PathVariable("id") Long id){
-        customerRepo.delete(id);
+    @PutMapping("{id}")
+    public Customer update(@PathVariable Integer id,
+                           @RequestBody Customer customer){
+        customer.setId(id);
+        logger.info("Inserted customer is: " + customer);
+
+        return customerRepo.update(customer);
     }
-
-
 }

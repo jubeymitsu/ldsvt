@@ -1,8 +1,5 @@
 package ru.stomprf.main;
 
-
-
-
 public class Customer {
 
     public Customer(){}
@@ -17,23 +14,23 @@ public class Customer {
         this.discount = discount;
     }
 
-    private Long id;
+    private Integer id;
     private String name;
     private String phoneNumber;
     private Integer discount;
 
-    public Customer(Long id, String name, String phoneNumber, int discount) {
+    public Customer(Integer id, String name, String phoneNumber, int discount) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.discount = discount;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -11,3 +11,5 @@ CREATE TABLE customers(
 );
 
 INSERT INTO customers(name, phone_number, discount) VALUES('', '', );
+
+UPDATE customers SET (name, phone_number, discount) = ('Max', '+79216059940', 5) WHERE id = 17;
