@@ -1,19 +1,36 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Список пользователей</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-Hello, user!
+<h2>Список пользователей</h2>
+<form name="userForm">
+    <input type="hidden" name="id" value="0" />
+    <div class="form-group">
+        <label for="name">Имя:</label>
+        <input class="form-control" name="name" />
+    </div>
+    <div class="form-group">
+        <label for="age">Возраст:</label>
+        <input class="form-control" name="age" />
+    </div>
+    <div class="panel-body">
+        <button type="submit" class="btn btn-sm btn-primary">Сохранить</button>
+        <a id="reset" class="btn btn-sm btn-primary">Сбросить</a>
+    </div>
+</form>
+<table class="table table-condensed table-striped table-bordered">
+    <thead><tr><th>Имя</th><th>Номер телефона</th><th>Скидка</th><th></th></tr></thead>
+    <tbody>
+    </tbody>
+</table>
 
-<div id="app">{{ message }}</div>
 
-<!--<script src="main.js"></script>-->
-<script src="vuestuff.js"></script>
+<script src="main.js"></script>
+<!--<script src="vuestuff.js"></script>-->
 </body>
 </html>

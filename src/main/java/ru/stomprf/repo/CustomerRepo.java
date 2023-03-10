@@ -54,7 +54,6 @@ public class CustomerRepo implements Dao<Integer, Customer>{
             PreparedStatement statement = connection.prepareStatement(SQL_SELECT_USER_ID);
             statement.setInt(1, dbUserId);
             ResultSet rs = statement.executeQuery();
-            System.out.println("CHECKS");
             if (rs.next()){
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
@@ -67,14 +66,15 @@ public class CustomerRepo implements Dao<Integer, Customer>{
                 customer.setPhoneNumber(phoneNumber);
                 customer.setDiscount(discount);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
         return customer;
     }
 
     @Override
     public Customer delete(Integer id) {
+        //Checks if user even exists, if not just return null user
         Customer customer = findEntityById(id);
         if (customer == null)
             return null;
@@ -85,10 +85,9 @@ public class CustomerRepo implements Dao<Integer, Customer>{
             int result = statement.executeUpdate();
             logger.info("Result of deleting user: " + result);
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
-
         return customer;
     }
 
@@ -108,8 +107,8 @@ public class CustomerRepo implements Dao<Integer, Customer>{
             int result = statement.executeUpdate();
             logger.info("Saved customer" + customer);
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
             return null;
         }
         return customer;
@@ -134,8 +133,8 @@ public class CustomerRepo implements Dao<Integer, Customer>{
             int result = statement.executeUpdate();
             logger.info("Updated customer" + customer +"\n Result: "+  result);
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
             return null;
         }
         return dbCustomer;
